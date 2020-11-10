@@ -43,7 +43,7 @@ char* separar_executar_Comandos(char comando[]){
 	}	
 	posicaoFimComando[j]=strlen(comando);
 	
-	comandos = (char*)malloc(qntComandos*sizeof(char));
+	comandos = (char**)malloc(qntComandos*sizeof(char*));
 	if(comandos==NULL){
 		printf("algo deu errado!");
 		exit(1);
@@ -116,9 +116,6 @@ char* separar_executar_Comandos(char comando[]){
 			  			exit (0);
 					}
 		    		}
-		    		else {
-		       		wait();
-		    		}
 			}
 		}
         		
@@ -135,13 +132,13 @@ int main(){
 	char comando[512];
 	strcpy(comando ,"");
 	while(strcmp(comando,"quit")!=0){
-		sleep(0.5);
+		sleep(0.7);
 		printf("Shell> ");
 		fgets(comando,511,stdin);
 		comando[strlen(comando)-1]=0;
 		strcpy(comando ,separar_executar_Comandos(comando));
 		//faz o programa esperar o termino da execucao da funçao acima
-		sleep(0.5);
+		sleep(0.7);
 	}
 	return 0;
 }
